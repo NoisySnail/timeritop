@@ -10,6 +10,7 @@ function App() {
   let [ongoing, setOngoing] = useState(false)
   const moving = useRef(null)
 
+  let [yaKostyl, vsePloho] = useState(false)
 
   //const go
 
@@ -20,16 +21,16 @@ function App() {
     }
 
     if(ongoing) {
+      clearTimeout(moving.current)
       moving.current = setTimeout(yepcock, 1000);
-      //setTimeout(go, 1000);
     } else {
       clearTimeout(moving.current)
     }
   })
 
   const reset = () => {
-    clearTimeout(moving.current);
     setCurrentTime(0);
+    vsePloho(!yaKostyl);
   }
 
   const switchup = () => setOngoing(!ongoing);
@@ -45,7 +46,7 @@ function App() {
         <div className="App">
           <Reset func={reset}/>
           <Wait func={switchup} status={ongoing}/>
-          <StartStop switching={switchup} ongoing={ongoing}/>
+          <StartStop reset={reset} switching={switchup} ongoing={ongoing}/>
         </div>
       </>
   );
