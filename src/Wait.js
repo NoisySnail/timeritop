@@ -1,14 +1,15 @@
 import React, {useState} from "react"
+import timer from "./Store"
 
-function Wait(props){
+function Wait(){
     const [active, setActive] = useState(false)
     const handleClick = () => {
         if(!active){
             setActive(true)
             setTimeout(() => setActive(false), 300)
         } else {
-            if(props.status)
-                props.func()
+            if(timer.ongoing)
+                timer.switchup()
         }
     }
 

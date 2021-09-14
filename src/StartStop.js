@@ -1,22 +1,17 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
+import timer from "./Store"
 
-function StartStop(props){
-    const [name, setName] = useState("Start")
-
-useEffect(() => {
-    if(props.ongoing){
-        setName("Stop")
-    } else {
-        setName("Start")
-    }
-
-}, [props.ongoing])
-
+function StartStop(){
     function handleClick() {
-        props.switching()
+        if(timer.ongoing){
+            timer.switchup()
+            timer.reset()
+        } else {
+            timer.switchup()
+        }
     }
     return(
-        <button onClick={handleClick}>{name}</button>
+        <button onClick={handleClick}>{timer.name}</button>
     )
 }
 

@@ -1,8 +1,9 @@
 import React from "react"
+import timer from "./Store"
 
-function Reset(props){
+function Reset(){
     return(
-        <button onClick={props.func}>Reset</button>
+        <button onClick={timer.reset}>Reset</button>
     )
 }
 
